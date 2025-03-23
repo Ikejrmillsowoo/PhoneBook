@@ -47,19 +47,18 @@ public class PhoneBook {
 
     public String reverseLookup(String phoneNumber)  {
         String s = "";
-        for(String string : this.phonebook.keySet()){
-           if (this.phonebook.get(string).equals(phoneNumber)){
-               s = string;
+        for(Map.Entry<String, List<String>> string: this.phonebook.entrySet()){
+           if (string.getValue().contains(phoneNumber)){
+               s = (string.getKey());
            }
         }
         return s;
     }
 
     public List<String> getAllContactNames() {
-
         List<String> contacts = new ArrayList<>();
-        for (Map.Entry<String, List<String>> entry: this.phonebook.entrySet()){
-            contacts.add(entry.getKey());
+        for (Map.Entry<String, List<String>> string: this.phonebook.entrySet()){
+            contacts.add(string.getKey());
         }
         return contacts;
     }
